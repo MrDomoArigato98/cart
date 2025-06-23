@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Shop from "./components/Shop";
 import Cart from "./components/Cart";
 import ErrorPage from "./components/ErrorPage";
+import "./index.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
