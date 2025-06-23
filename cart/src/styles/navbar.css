@@ -8,13 +8,22 @@ nav {
   font-size: 1.2rem;
 }
 /* Removing Dom-Store */
-nav > a{
-    text-decoration: none;
+nav > a {
+  text-decoration: none;
 }
-.icon {
+/* Icon sizes for navbar, small and header size */
+.icon-small {
   width: 2rem;
   height: 2rem;
 }
+
+.icon-big {
+  width: 4rem;
+  height: 4rem;
+}
+/* Icon sizes for navbar, small and header size */
+
+/* Scalable class to reuse */
 .scalable {
   transition: transform 0.1s ease-in-out;
 }
@@ -22,13 +31,20 @@ nav > a{
 .scalable:hover {
   transform: scale(1.1); /* scales to 110% */
 }
-.nav-link-icon {
+/* Scalable class to reuse */
+.nav-link-icon-small {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
 }
 
+.nav-link-icon-big {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
 /* Styling nav middle layout, links and hover */
 .nav-middle {
   display: flex;
