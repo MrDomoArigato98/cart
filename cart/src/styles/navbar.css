@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding-top: 1rem;
+  font-size: 1.5rem;
+}
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+.nav-link-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+/* Styling nav middle layout, links and hover */
+.nav-middle {
+  display: flex;
+  gap: 2rem;
+}
+.nav-middle a {
+  text-decoration: none;
+  color: black;
+}
+.nav-middle a:hover {
+  text-decoration: underline;
+}
+/* Styling nav middle layout, links and hover */
