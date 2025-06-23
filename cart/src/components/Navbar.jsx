@@ -24,6 +24,8 @@ export default function Navbar() {
       <NavLink to="/cart" className="nav-link-icon-small scalable">
         <FaShoppingCart className="icon-small" />
         <span>Cart</span>
+        {/* Here I'll need to have the total number of items in the cart */}
+        <span>0</span>
       </NavLink>
     </nav>
   );
