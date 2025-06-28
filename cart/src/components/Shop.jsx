@@ -1,27 +1,48 @@
-import { useEffect } from "react";
-import { useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { ShopContext } from "../App";
 import "../styles/shop.css";
 
 export default function Shop() {
   const { products, addToCart } = useContext(ShopContext);
 
+  const [quantities, setQuantities] = useState({});
+
+  console.log(quantities);
+  function handleInputChange(id, value) {
+    const parsed = parseInt(value, 10);
+    if (!isNaN(parsed) && parsed > 0) {
+      setQuantities((prev) => ({
+        ...prev,
+        [id]: parsed,
+      }));
+    }
+  }
+
+  function displayProductCards() {
+    return products.map((item) => (
+      <div className="item" key={item.id}>
+        <img src={item.image} alt="" />
+        <p className="item-title">{item.title}</p>
+        <p className="item-price">€{item.price}</p>
+        <div className="quantity-input">
+          <button className="round-button">-</button>
+          <input
+            type="number"
+            value={quantities[item.id] || 1}
+            min="1"
+            onChange={(e) => handleInputChange(item.id, e.target.value)}
+          />
+          <button className="round-button">+</button>
+        </div>
+      </div>
+    ));
+  }
+
   return (
     <>
-      <h1>I am the shop</h1>
-
+      <h1>Explore SSD drives and ultra fast displays</h1>
       <div className="catalog">
-        <div className="products">
-          {products.map((item) => {
-            return (
-              <div className="item" key={item.id}>
-                <img src={item.image} width={300} height="auto" alt="" />
-                <p className="item-title">{item.title}</p>
-                <p className="item-description"> {item.description}</p>
-              </div>
-            );
-          })}
-        </div>
+        <div className="products">{displayProductCards()}</div>
       </div>
     </>
   );
