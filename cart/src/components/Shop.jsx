@@ -7,7 +7,6 @@ export default function Shop() {
 
   const [quantities, setQuantities] = useState({});
 
-  console.log(quantities);
   function handleInputChange(id, value) {
     const parsed = parseInt(value, 10);
     if (!isNaN(parsed) && parsed > 0) {
@@ -55,6 +54,12 @@ export default function Shop() {
             className="round-button"
           >
             +
+          </button>
+          <button
+            onClick={() => addToCart(item.id, quantities[item.id] || 1, item.price)}
+            className="add-to-cart-btn"
+          >
+            Add to cart
           </button>
         </div>
       </div>

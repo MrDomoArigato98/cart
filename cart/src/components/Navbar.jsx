@@ -5,9 +5,9 @@ import { FaShopify } from "react-icons/fa6";
 import { useContext } from "react";
 import { ShopContext } from "../App";
 
-
 export default function Navbar() {
   const { cartItems } = useContext(ShopContext);
+
   return (
     <nav>
       <NavLink to="/">
@@ -30,7 +30,7 @@ export default function Navbar() {
         <FaShoppingCart className="icon-small" />
         <span>Cart</span>
         {/* Here I'll need to have the total number of items in the cart */}
-        <span>{cartItems.length}</span>
+        <span>{Object.keys(cartItems).length}</span>
       </NavLink>
     </nav>
   );

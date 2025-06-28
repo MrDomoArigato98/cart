@@ -10,13 +10,27 @@ export const ShopContext = createContext({
 });
 
 export default function App() {
-  const [cartItems, setCartItems] = useState(["Shirt", "Trousers"]);
+  const [cartItems, setCartItems] = useState([]);
   const [products, setProducts] = useState([]);
 
-  const addToCart = () => {
+  const addToCart = (id, quantity, price) => {
     // add to cart logic (this adds to cartItems)
+    console.log(id, quantity, price);
+
+    setCartItems((prev) => {
+      const currentItem = prev[id] || { quantity: 0, price: price };
+      return {
+        ...prev,
+        [id]: {
+          quantity: currentItem.quantity + quantity,
+          price: price,
+        },
+      };
+    });
   };
 
+  console.log("Cart items are:");
+  console.log(cartItems);
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/category/electronics")
       .then((res) => {
@@ -27,10 +41,8 @@ export default function App() {
       })
       .then((res) => setProducts(res));
   }, []);
-    
-    console.log(products);
-  
-    return (
+
+  return (
     <>
       <ShopContext.Provider value={{ cartItems, products, addToCart }}>
         <Navbar />
