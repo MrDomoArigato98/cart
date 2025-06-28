@@ -8,7 +8,7 @@ export default function Cart() {
     var total = 0;
     Object.entries(cartItems).map(([id, { quantity, price }]) => {
       console.log(price);
-      total += parseInt(price) * quantity;
+      total += parseFloat(price) * quantity;
     });
     console.log("total is " + total);
 
