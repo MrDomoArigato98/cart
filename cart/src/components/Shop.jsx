@@ -18,6 +18,19 @@ export default function Shop() {
     }
   }
 
+  function handleDecrement(id) {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: Math.max((prev[id] || 1) - 1, 1),
+    }));
+  }
+  function handleIncrement(id) {
+    setQuantities((prev) => ({
+      ...prev,
+      [id]: (prev[id] || 1) + 1,
+    }));
+  }
+
   function displayProductCards() {
     return products.map((item) => (
       <div className="item" key={item.id}>
@@ -25,14 +38,24 @@ export default function Shop() {
         <p className="item-title">{item.title}</p>
         <p className="item-price">€{item.price}</p>
         <div className="quantity-input">
-          <button className="round-button">-</button>
+          <button
+            onClick={() => handleDecrement(item.id)}
+            className="round-button"
+          >
+            -
+          </button>
           <input
             type="number"
             value={quantities[item.id] || 1}
             min="1"
             onChange={(e) => handleInputChange(item.id, e.target.value)}
           />
-          <button className="round-button">+</button>
+          <button
+            onClick={() => handleIncrement(item.id)}
+            className="round-button"
+          >
+            +
+          </button>
         </div>
       </div>
     ));
